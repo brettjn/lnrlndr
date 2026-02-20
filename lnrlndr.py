@@ -140,7 +140,7 @@ class Lander:
         # Apply thrust if fuel available
         if self.thrust > 0 and self.fuel > 0:
             rad = math.radians(self.angle)
-            self.vx -= self.thrust * math.sin(rad)
+            self.vx += self.thrust * math.sin(rad)
             self.vy -= self.thrust * math.cos(rad)
             self.fuel -= self.thrust * FUEL_CONSUMPTION_RATE
             if self.fuel < 0:
@@ -288,9 +288,9 @@ class Game:
         # Continuous key presses for rotation
         keys = pygame.key.get_pressed()
         if self.game_state == "playing":
-            if keys[pygame.K_LEFT]:
+            if keys[pygame.K_LEFT] or keys[pygame.K_a]:
                 self.lander.rotate_left()
-            if keys[pygame.K_RIGHT]:
+            if keys[pygame.K_RIGHT] or keys[pygame.K_d]:
                 self.lander.rotate_right()
     
     def update(self):
@@ -354,8 +354,8 @@ class Game:
         self.screen.blit(angle_text, (10, 110))
         
         # Instructions
-        inst_text = self.small_font.render("← → ROTATE | SCROLL THRUST", True, WHITE)
-        self.screen.blit(inst_text, (SCREEN_WIDTH - 320, 10))
+        inst_text = self.small_font.render("← → A D ROTATE | SCROLL THRUST", True, WHITE)
+        self.screen.blit(inst_text, (SCREEN_WIDTH - 350, 10))
     
     def draw_message(self, text: str, color: Tuple[int, int, int]):
         """Draw centered message"""
