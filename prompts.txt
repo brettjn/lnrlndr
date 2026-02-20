@@ -1,0 +1,3 @@
+=Lunar Lander=
+
+Lets create a clone of the arcade video game classic Lunar Lander.  This is a vector graphic video game (like asteroids) where an apollo descent module shaped spaceship is landing on a mountainous region on the moon.  It starts at the top of the screen and gravity pulls it down. The player can rotate the ship left and right by using the left and right keyboard arrow keys. The thrustlevel can be increased and decreased using the mouse scroll wheel.  Lets create a .venv python evnironment and load the library pygame to utilize for building the game. The python game file will be named lnrlndr.py
